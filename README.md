@@ -1,6 +1,6 @@
 # find-a-pickup-slots
 
-## Installing / Getting started
+## Getting started
 
 ```shell
 npm run dev
