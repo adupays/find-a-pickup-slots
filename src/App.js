@@ -1,8 +1,15 @@
 import React from "react";
-import { Router } from "@reach/router";
+import { Router, Link } from "@reach/router";
 import Header from "./Header";
 import Form from "./Form";
 import Footer from "./Footer";
+
+const NotFound = () => (
+  <div>
+    Cette page n&apos;existe pas. <Link to="/">Cliquez ici</Link> pour retourner
+    à la page d&apos;accueil.
+  </div>
+);
 
 const App = () => {
   return (
@@ -10,6 +17,7 @@ const App = () => {
       <Header title="Find a pickup slot!"></Header>
       <Router>
         <Form path="/" />
+        <NotFound default />
       </Router>
       <Footer />
     </React.Fragment>

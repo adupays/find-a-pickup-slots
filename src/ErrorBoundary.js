@@ -26,7 +26,7 @@ class ErrorBoundary extends Component {
       return (
         <h1>
           Une erreur est survenue. <Link to="/">Cliquez ici</Link> pour
-          retourner à la page d'accueil ou patientez cinq secondes
+          retourner à la page d&apos;accueil ou patientez cinq secondes
         </h1>
       );
     }

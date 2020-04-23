@@ -5,11 +5,14 @@
   "main": "src/App.js",
   "scripts": {
     "clear-build-cache": "rm -rf .cache/ dist/",
-    "dev": "parcel src/index.html",
+    "dev": "npm run clear-build-cache && npm run dev-client & npm run dev-server",
+    "dev-client": "parcel src/index.html -d dist/client",
+    "dev-server": "parcel watch server/index.js -d dist/server --target node",
     "build": "npm run clear-build-cache && npm run build-client && npm run build-server",
     "build-client": "cross-env BABEL_ENV=client parcel build src/index.html -d dist/client --public-url /dist",
     "build-server": "cross-env BABEL_ENV=server parcel build server/index.js -d dist/server --public-url /dist --target node",
     "start": "node dist/server",
+    "start:dev": "nodemon dist/server",
     "format": "prettier --write \"src/**/*.{js,jsx}\"",
     "lint": "eslint \"src/**/*.{js,jsx}\" --quiet",
     "test": "echo \"Error: no test specified\" && exit 1"
@@ -27,6 +30,7 @@
   "devDependencies": {
     "@babel/cli": "^7.8.4",
     "@babel/core": "^7.9.0",
+    "@babel/node": "^7.8.7",
     "@babel/plugin-proposal-class-properties": "^7.8.3",
     "@babel/preset-env": "^7.9.5",
     "@babel/preset-react": "^7.9.4",
@@ -39,6 +43,7 @@
     "eslint-plugin-jsx-a11y": "^6.2.3",
     "eslint-plugin-react": "^7.19.0",
     "eslint-plugin-react-hooks": "^3.0.0",
+    "nodemon": "^2.0.3",
     "parcel-bundler": "^1.12.4",
     "prettier": "2.0.4"
   },

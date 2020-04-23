@@ -2,7 +2,7 @@
 
 import { printDrainHydrateMarks } from "react-imported-component";
 import React from "react";
-import ReactDOM from "react-dom/server";
+import ReactDOMServer from "react-dom/server";
 import { ServerLocation } from "@reach/router";
 import App from "../src/App";
 import generateHtml from "./generateHtml";
@@ -16,7 +16,7 @@ export default (req, res) => {
     </ServerLocation>
   );
 
-  const markup = ReactDOM.renderToString(router);
+  const markup = ReactDOMServer.renderToString(router);
 
   // If react-router is redirecting, do it on the server side
   if (context.url) {
