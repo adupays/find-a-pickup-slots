@@ -6,13 +6,12 @@
   "scripts": {
     "clear-build-cache": "rm -rf .cache/ dist/",
     "dev": "npm run clear-build-cache && npm run dev-client & npm run dev-server",
-    "dev-client": "parcel src/index.html -d dist/client",
-    "dev-server": "parcel watch server/index.js -d dist/server --target node",
+    "dev-client": "parcel src/index.html",
+    "dev-server": "cross-env NODE_ENV=development nodemon --exec babel-node server/index.js",
     "build": "npm run clear-build-cache && npm run build-client && npm run build-server",
     "build-client": "cross-env BABEL_ENV=client parcel build src/index.html -d dist/client --public-url /dist",
     "build-server": "cross-env BABEL_ENV=server parcel build server/index.js -d dist/server --public-url /dist --target node",
     "start": "node dist/server",
-    "start:dev": "nodemon dist/server",
     "format": "prettier --write \"src/**/*.{js,jsx}\"",
     "lint": "eslint \"src/**/*.{js,jsx}\" --quiet",
     "test": "echo \"Error: no test specified\" && exit 1"

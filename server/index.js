@@ -4,7 +4,7 @@ import middleware from "./middleware";
 import api from "./api";
 
 // Check for PORT environment variable, otherwise fallback on Parcel default port
-const PORT = process.env.PORT || 1111;
+const LISTEN_PORT = process.env.PORT || 1111;
 
 const app = express();
 
@@ -15,13 +15,15 @@ app.use(compression());
 app.use("/dist", express.static(`${__dirname}/../client`));
 
 app.get("/api", function (req, res) {
-  res.send("Hello World!");
+  res.send("API!");
 });
 
 // Anything unresolved is serving the application and let
 // react-router do the routing!
-app.get("/*", middleware);
+if (process.env.NODE_ENV === "production") {
+  app.get("/*", middleware);
+}
 
-app.listen(PORT, () => {
-  console.log(`Listening on port ${PORT}...`);
+app.listen(LISTEN_PORT, () => {
+  console.log(`Listening on port ${LISTEN_PORT}...`);
 });
