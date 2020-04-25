@@ -4,7 +4,7 @@ import { printDrainHydrateMarks } from "react-imported-component";
 import React from "react";
 import ReactDOM from "react-dom/server";
 import { ServerLocation } from "@reach/router";
-import App from "../src/App";
+import App from "../../src/App";
 import generateHtml from "./generateHtml";
 
 export default (req, res) => {

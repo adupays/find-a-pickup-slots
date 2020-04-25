@@ -15,7 +15,6 @@ if (process.env.NODE_ENV === "production") {
   ReactDOM.render(<App />, element);
 }
 
-// Hot reload is that easy with Parcel
 if (module.hot) {
   module.hot.accept();
 }

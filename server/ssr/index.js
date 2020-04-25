@@ -3,7 +3,7 @@ import express from "express";
 import middleware from "./middleware";
 
 // Check for PORT environment variable, otherwise fallback on Parcel default port
-const PORT = process.env.PORT || 1234;
+const PORT = process.env.SSR_LISTEN_PORT || 1234;
 
 const app = express();
 
