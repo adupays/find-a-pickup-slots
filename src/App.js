@@ -14,7 +14,7 @@ const NotFound = () => (
 const App = () => {
   return (
     <React.Fragment>
-      <Header title="Find a pickup slot!"></Header>
+      <Header title="Trouver un créneau !"></Header>
       <Router>
         <Form path="/" />
         <NotFound default />

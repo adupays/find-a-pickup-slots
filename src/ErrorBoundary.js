@@ -24,10 +24,10 @@ class ErrorBoundary extends Component {
 
     if (this.state.hasError) {
       return (
-        <h1>
+        <h3>
           Une erreur est survenue. <Link to="/">Cliquez ici</Link> pour
           retourner à la page d&apos;accueil ou patientez cinq secondes
-        </h1>
+        </h3>
       );
     }
 

@@ -3,7 +3,7 @@ import express from "express";
 import middleware from "./middleware";
 
 // Check for PORT environment variable, otherwise fallback on Parcel default port
-const PORT = process.env.SSR_LISTEN_PORT || 1234;
+const LISTEN_PORT = process.env.SSR_LISTEN_PORT || 1234;
 
 const app = express();
 
@@ -17,6 +17,6 @@ app.use("/dist", express.static(`${__dirname}/../client`));
 // react-router do the routing!
 app.get("/*", middleware);
 
-app.listen(PORT, () => {
-  console.log(`Listening on port ${PORT}...`);
+app.listen(LISTEN_PORT, () => {
+  console.log(`Listening on port ${LISTEN_PORT}...`);
 });
