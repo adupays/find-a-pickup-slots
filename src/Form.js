@@ -1,29 +1,49 @@
-import React from "react";
+import React, { useState, useEffect } from "react";
 import ErrorBoundary from "./ErrorBoundary";
 import useDropdown from "./useDropdown";
+import supermarkets from "../mocks/supermarkets";
 
 const Form = () => {
   const [supermarket, SupermarketDropdown] = useDropdown("Enseigne", "Auchan", [
     "Auchan",
+    "Carrefour",
   ]);
-  const [location, LocationDropdown] = useDropdown("Ville", "", []);
+  const [locations, updateLocations] = useState([]);
+  const [location, LocationDropdown, updateLocation] = useDropdown(
+    "Ville",
+    "",
+    locations
+  );
 
-  async function subscribeToNotifications() {
-    console.log("subscribeToNotifications");
+  function subscribeToNotifications() {
+    console.log("subscribe To Notifications");
   }
 
+  useEffect(() => {
+    updateLocations([]);
+    updateLocation("");
+
+    supermarkets.then((list) => {
+      const locationStrings = list[supermarket].map(({ name }) => name);
+      updateLocations(locationStrings);
+    }, console.error);
+  }, [supermarket]);
+
   return (
-    <form
-      className="form-container"
-      onSubmit={(e) => {
-        e.preventDefault();
-        subscribeToNotifications();
-      }}
-    >
-      <SupermarketDropdown required />
-      <LocationDropdown />
-      <button className="form-btn-submit">S'inscrire aux notifications</button>
-    </form>
+    <div className="form-container">
+      <form
+        onSubmit={(e) => {
+          e.preventDefault();
+          subscribeToNotifications();
+        }}
+      >
+        <SupermarketDropdown required />
+        <LocationDropdown required />
+        <button className="form-btn-submit">
+          S&apos;inscrire aux notifications
+        </button>
+      </form>
+    </div>
   );
 };
 
